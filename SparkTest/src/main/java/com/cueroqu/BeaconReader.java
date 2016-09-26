@@ -42,7 +42,7 @@ public class BeaconReader {
     public static void main(String[] args) {
         SparkConf sparkConf = new SparkConf().setAppName("CueroReadsBeacon");
         JavaSparkContext javaSparkContext = new JavaSparkContext(sparkConf);
-        String path = "hdfs://beaconstore/user/hadoop/t2/201609071500/playback/201609071500_playback_elsflume007.server.hulu.com_0.seq";
+        String path = ""; // set to sequence file path
         JavaPairRDD<LongWritable, Text> dataSets = javaSparkContext.sequenceFile(path, LongWritable.class, Text.class);
         JavaPairRDD<String, Integer> rdd2 = dataSets.mapToPair(new PairFunction<Tuple2<LongWritable, Text>, String, Integer>() {
             @Override
